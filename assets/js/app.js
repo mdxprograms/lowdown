@@ -43,8 +43,6 @@
       data.url = 'https://reddit.com/r/deathmetal/.json';
 
       data.fetch({
-        type: 'GET',
-        dataType: 'json',
         success: function (items) {
           console.log(items);
           self.$el.html(self.template({
