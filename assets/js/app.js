@@ -1,6 +1,6 @@
 /*jslint nomen: true*/
 /*globals Backbone, $, _, console*/
-(function () {
+(function() {
   'use strict';
 
   var App = {
@@ -17,15 +17,34 @@
   //collections
 
   //views
+  App.views.SearchView = Backbone.View.extend({
+    el: $('.search'),
+
+    initialize: function() {
+      this.input = $('.search input[type=text]');
+      this.submit = $('.search input[type=submit]');
+    },
+
+    events: {
+      'submit .search-form': 'searchSub'
+    },
+
+    searchSub: function(e) {
+      e.preventDefault();
+      router.navigate('#/reddit/' + this.input.val(), {
+        trigger: true
+      });
+    }
+  });
+
   App.views.HomeView = Backbone.View.extend({
     el: $('#reddit'),
 
-    initialize: function () {
+    initialize: function() {
       this.render();
     },
 
-    render: function () {
-      this.$el.html('asdfasdfa');
+    render: function() {
       return this;
     }
   });
@@ -35,25 +54,28 @@
 
     template: _.template($('#reddit-template').html()),
 
-    initialize: function (sub) {
+    initialize: function(sub) {
       this.url = 'https://www.reddit.com/r/' + sub + '.json';
       this.render();
     },
 
-    render: function () {
+    render: function() {
       var self = this;
+      this.$el.empty().hide().fadeIn();
 
       $.getJSON(
         this.url,
-        function (data) {
+        function(data) {
           $.each(data.data.children,
-            function (i, post) {
+            function(i, post) {
               self.$el.append(self.template({
                 post: post.data
               }));
             });
         }
       );
+
+      var search = new App.views.SearchView();
 
       return this;
     }
@@ -69,11 +91,11 @@
 
   router = new App.router();
 
-  router.on('route:home', function () {
+  router.on('route:home', function() {
     var homeView = new App.views.HomeView();
   });
 
-  router.on('route:reddit', function (sub) {
+  router.on('route:reddit', function(sub) {
     var redditView = new App.views.RedditView(sub);
   });
 
