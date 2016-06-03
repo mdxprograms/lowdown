@@ -39,17 +39,25 @@ a {
 #reddit .reddit-item {
   padding: 2rem 1rem;
   margin: 1rem .5rem;
-  background: #333;
+  background: #fff;
   box-shadow: 0 0 10px #444;
   list-style: none;
-  -webkit-flex-basis: 22%;
-  -ms-flex-preferred-size: 22%;
-  flex-basis: 22%;
-  color: #00ffff;
+  color: orangered;
+  width: 28%;
+  height: 260px;
+}
+
+#reddit .thumb-img {
+  background-color: #333;
+  height: 70%;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #reddit .reddit-item a {
-  color: #fff;
+  color: orangered;
 }
 
 .search {

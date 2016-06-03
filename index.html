@@ -11,7 +11,7 @@
 <body>
   <a href="#/reddit">reddit</a>
   <section class="search"></section>
-  <ul id="reddit"></ul>
+  <div id="reddit"></div>
 
   <!-- templates-->
   <script type="text/template" id="search-template">
@@ -22,17 +22,18 @@
   </script>
 
   <script type="text/template" id="reddit-template">
-    <li class="reddit-item">
+    <div class="reddit-item">
       <a target="_blank" href="<%= post.url %>">
         <%= post.title %>
       </a>
+      <div class="thumb-img" style="background-image:url(<%= image %>);"></div>
       <p>
         ups:
         <%= post.ups %>
           downs:
           <%= post.downs %>
       </p>
-    </li>
+    </div>
   </script>
 
   <script src=" node_modules/jquery/dist/jquery.min.js "></script>

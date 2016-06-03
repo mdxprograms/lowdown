@@ -23,14 +23,14 @@
     template: _.template($('#search-template').html()),
 
     initialize: function() {
-      this.render(); 
+      this.render();
     },
 
     events: {
       'submit .search-form': 'searchSub'
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template);
     },
 
@@ -71,17 +71,19 @@
       var self = this;
       this.$el.empty();
 
-      $.getJSON(
-        this.url,
-        function(data) {
-          $.each(data.data.children,
-            function(i, post) {
-              self.$el.append(self.template({
-                post: post.data
-              }));
-            });
-        }
-      );
+      $.getJSON(this.url, function(data) {
+        $.each(data.data.children, function(i, post) {
+          var image = 'http://core0.staticworld.net/images/article/2012/11/reddit_log-100011890-large.jpg';
+          if (!_.isNull(post.data.media)) {
+            image = post.data.media.oembed.thumbnail_url;
+          }
+
+          self.$el.append(self.template({
+            post: post.data,
+            image: image
+          }));
+        });
+      });
 
       return this;
     }
@@ -102,7 +104,7 @@
     var homeView = new App.views.HomeView();
   });
 
-  router.on('route:reddit', function () {
+  router.on('route:reddit', function() {
     $('#reddit').html('');
     var search = new App.views.SearchView();
   })
