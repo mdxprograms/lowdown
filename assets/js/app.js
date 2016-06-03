@@ -23,9 +23,7 @@
     template: _.template($('#search-template').html()),
 
     initialize: function() {
-      this.render();
-      this.input = $('.search input[type=text]');
-      this.submit = $('.search input[type=submit]');
+      this.render(); 
     },
 
     events: {
@@ -38,6 +36,9 @@
 
     searchSub: function(e) {
       e.preventDefault();
+      this.input = $('.search input[type=text]');
+      this.submit = $('.search input[type=submit]');
+
       router.navigate('#/reddit/' + this.input.val(), {
         trigger: true
       });
@@ -82,8 +83,6 @@
         }
       );
 
-      var search = new App.views.SearchView();
-
       return this;
     }
   });
@@ -110,6 +109,7 @@
 
   router.on('route:redditSub', function(sub) {
     var redditView = new App.views.RedditView(sub);
+    var search = new App.views.SearchView();
   });
 
   // init app
