@@ -20,13 +20,20 @@
   App.views.SearchView = Backbone.View.extend({
     el: $('.search'),
 
+    template: _.template($('#search-template').html()),
+
     initialize: function() {
+      this.render();
       this.input = $('.search input[type=text]');
       this.submit = $('.search input[type=submit]');
     },
 
     events: {
       'submit .search-form': 'searchSub'
+    },
+
+    render: function () {
+      this.$el.html(this.template);
     },
 
     searchSub: function(e) {
@@ -85,7 +92,8 @@
   App.router = Backbone.Router.extend({
     routes: {
       '': 'home',
-      'reddit/:sub': 'reddit'
+      'reddit': 'reddit',
+      'reddit/:sub': 'redditSub'
     }
   });
 
@@ -95,7 +103,12 @@
     var homeView = new App.views.HomeView();
   });
 
-  router.on('route:reddit', function(sub) {
+  router.on('route:reddit', function () {
+    $('#reddit').html('');
+    var search = new App.views.SearchView();
+  })
+
+  router.on('route:redditSub', function(sub) {
     var redditView = new App.views.RedditView(sub);
   });
 

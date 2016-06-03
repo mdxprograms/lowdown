@@ -9,16 +9,18 @@
 </head>
 
 <body>
-  <section class="search">
+  <a href="#/reddit">reddit</a>
+  <section class="search"></section>
+  <ul id="reddit"></ul>
+
+  <!-- templates-->
+  <script type="text/template" id="search-template">
     <form class="search-form">
       <input type="text" name="searchVal">
       <input type="submit" value="Search">
     </form>
-  </section>
-  <ul id="reddit"></ul>
+  </script>
 
-
-  <!-- templates-->
   <script type="text/template" id="reddit-template">
     <li class="reddit-item">
       <a target="_blank" href="<%= post.url %>">
