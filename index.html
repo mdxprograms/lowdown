@@ -4,21 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Lowdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
-  <div id="app"></div>
+  <h1>lowdown</h1>
+  <hr>
+  <section class="search">
+    <h3>Search</h3>
+    <form>
+      <input type="text">
+      <input type="submit" value="Search">
+    </form>
+  </section>
+  <ul id="reddit"></ul>
 
-  <script type="text/template" id="app-template">
-    <%= name %>
+
+  <!-- templates-->
+  <script type="text/template" id="reddit-template">
+    <li class="reddit-item">
+      <a target="_blank" href="<%= post.url %>">
+        <%= post.title %>
+      </a>
+      <p>
+        ups:
+        <%= post.ups %>
+          downs:
+          <%= post.downs %>
+      </p>
+    </li>
   </script>
 
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/underscore/underscore-min.js"></script>
-  <script src="node_modules/backbone/backbone-min.js"></script>
-  <script src="assets/js/app.js"></script>
-
+  <script src=" node_modules/jquery/dist/jquery.min.js "></script>
+  <script src="node_modules/underscore/underscore-min.js "></script>
+  <script src="node_modules/backbone/backbone-min.js "></script>
+  <script src="assets/js/app.js "></script>
 
 </body>
 

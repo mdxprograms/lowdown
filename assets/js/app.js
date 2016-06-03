@@ -3,15 +3,6 @@
 (function () {
   'use strict';
 
-  $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-    options.crossDomain = {
-      crossDomain: true
-    };
-    options.xhrFields = {
-      withCredentials: true
-    };
-  });
-
   var App = {
       models: {},
       collections: {},
@@ -24,32 +15,45 @@
   App.models.item = Backbone.Model.extend({});
 
   //collections
-  App.collections.endpoint = Backbone.Collection.extend({});
 
   //views
-  App.views.AppView = Backbone.View.extend({
-    el: $('#app'),
-
-    template: _.template($('#app-template').html()),
+  App.views.HomeView = Backbone.View.extend({
+    el: $('#reddit'),
 
     initialize: function () {
       this.render();
     },
 
     render: function () {
-      var data = new App.collections.endpoint(),
-        self = this;
+      this.$el.html('asdfasdfa');
+      return this;
+    }
+  });
 
-      data.url = 'https://reddit.com/r/deathmetal/.json';
+  App.views.RedditView = Backbone.View.extend({
+    el: $('#reddit'),
 
-      data.fetch({
-        success: function (items) {
-          console.log(items);
-          self.$el.html(self.template({
-            items: items
-          }));
+    template: _.template($('#reddit-template').html()),
+
+    initialize: function (sub) {
+      this.url = 'http://www.reddit.com/r/' + sub + '.json';
+      this.render();
+    },
+
+    render: function () {
+      var self = this;
+
+      $.getJSON(
+        this.url,
+        function (data) {
+          $.each(data.data.children,
+            function (i, post) {
+              self.$el.append(self.template({
+                post: post.data
+              }));
+            });
         }
-      });
+      );
 
       return this;
     }
@@ -58,16 +62,23 @@
   //router
   App.router = Backbone.Router.extend({
     routes: {
-      '': 'home'
+      '': 'home',
+      'reddit/:sub': 'reddit'
     }
   });
 
   router = new App.router();
 
   router.on('route:home', function () {
-    var appView = new App.views.AppView();
+    var homeView = new App.views.HomeView();
+  });
+
+  router.on('route:reddit', function (sub) {
+    var redditView = new App.views.RedditView(sub);
   });
 
   // init app
-  Backbone.history.start();
+  Backbone.history.start({
+    pushState: true
+  });
 }());
