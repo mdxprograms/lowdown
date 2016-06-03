@@ -69,7 +69,7 @@
 
     render: function() {
       var self = this;
-      this.$el.empty().hide().fadeIn();
+      this.$el.empty();
 
       $.getJSON(
         this.url,
