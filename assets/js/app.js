@@ -36,7 +36,7 @@
     template: _.template($('#reddit-template').html()),
 
     initialize: function (sub) {
-      this.url = 'http://www.reddit.com/r/' + sub + '.json';
+      this.url = 'https://www.reddit.com/r/' + sub + '.json';
       this.render();
     },
 
