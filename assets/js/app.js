@@ -4,17 +4,10 @@
   'use strict';
 
   var App = {
-      models: {},
-      collections: {},
       views: {},
       router: {}
     },
     router = {};
-
-  //models
-  App.models.item = Backbone.Model.extend({});
-
-  //collections
 
   //views
   App.views.SearchView = Backbone.View.extend({
