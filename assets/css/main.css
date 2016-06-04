@@ -9,8 +9,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
 }
 
 a {
@@ -36,6 +34,10 @@ a {
   justify-content: space-around;
 }
 
+.reddit-bg {
+  background: #cee3f8;
+}
+
 #reddit .reddit-item {
   padding: 2rem 1rem;
   margin: 1rem .5rem;
@@ -45,6 +47,13 @@ a {
   color: orangered;
   width: 28%;
   height: 260px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#reddit .reddit-item:hover {
+  background: #dedede;
+  box-shadow: 0 0 10px #fff;
 }
 
 #reddit .thumb-img {

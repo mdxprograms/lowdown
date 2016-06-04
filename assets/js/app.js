@@ -78,6 +78,8 @@
         });
       });
 
+      $('body').attr('class', 'reddit-bg');
+
       return this;
     }
   });

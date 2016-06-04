@@ -22,17 +22,18 @@
   </script>
 
   <script type="text/template" id="reddit-template">
+
     <div class="reddit-item">
       <a target="_blank" href="<%= post.url %>">
         <%= post.title %>
-      </a>
-      <div class="thumb-img" style="background-image:url(<%= image %>);"></div>
-      <p>
-        ups:
-        <%= post.ups %>
+        <div class="thumb-img" style="background-image:url(<%= image %>);"></div>
+        <p>
+          ups:
+          <%= post.ups %>
           downs:
           <%= post.downs %>
-      </p>
+        </p>
+      </a>
     </div>
   </script>
 
