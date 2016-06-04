@@ -29,10 +29,7 @@
 
     searchSub: function(e) {
       e.preventDefault();
-      this.input = $('.search input[type=text]');
-      this.submit = $('.search input[type=submit]');
-
-      router.navigate('#/reddit/' + this.input.val(), {
+      router.navigate('#/reddit/' + $('.search input[type=text]').val(), {
         trigger: true
       });
     }
