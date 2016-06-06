@@ -42,7 +42,7 @@ a {
   padding: 2rem 1rem;
   margin: 1rem .5rem;
   background: #fff;
-  box-shadow: 0 0 10px #444;
+  box-shadow: 0 0 10px #5f99c4;
   list-style: none;
   color: orangered;
   width: 28%;
@@ -52,8 +52,12 @@ a {
 }
 
 #reddit .reddit-item:hover {
-  background: #dedede;
-  box-shadow: 0 0 10px #fff;
+  background: orangered;
+  color: #fff;
+}
+
+#reddit .reddit-item:hover a {
+  color: #fff;
 }
 
 #reddit .thumb-img {
@@ -65,10 +69,6 @@ a {
   background-repeat: no-repeat;
 }
 
-#reddit .reddit-item a {
-  color: orangered;
-}
-
 .search {
   flex-basis: 30%;
   margin: 0 auto;
@@ -78,7 +78,7 @@ a {
 .search input[type=text] {
   padding: .4rem;
   border: none;
-  box-shadow: 1px 1px 4px #555;
+  box-shadow: 1px 1px 4px #5f99cf;
   font-size: 18px;
 }
 
@@ -87,12 +87,13 @@ a {
   border-radius: 0;
   font-size: 18px;
   padding: .4rem .7rem;
-  box-shadow: 1px 1px 4px #555;
-  color: #cee3f8;
-  background: #777;
+  box-shadow: 1px 1px 4px #5f99cf;
+  color: #5f99cf;
+  background: #fff;
   cursor: pointer;
+  transition: color 0.6s;
 }
 
 .search input[type=submit]:hover {
-  background: #555;
+  color: orangered;
 }
